@@ -183,85 +183,140 @@ export const Header = () => {
       </nav>
 
       {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-0 pt-32 z-40 bg-background overflow-y-auto">
-          <nav className="container py-4 space-y-1">
-            {navTree?.map((item) => {
-              const Icon = getIcon(item.icon);
-              if (item.children && item.children.length > 0) {
-                const active = isInSection(item);
+        {isMenuOpen && (
+          <div className="lg:hidden fixed inset-0 top-0 pt-20 z-40 bg-[#004643] overflow-y-auto shadow-xl">
+            <nav className="container py-4 space-y-1">
+              {navTree?.map((item) => {
+                const Icon = getIcon(item.icon);
+        
+                if (item.children && item.children.length > 0) {
+                  const active = isInSection(item);
+        
+                  return (
+                    <Collapsible
+                      key={item.id}
+                      open={mobileOpenSection === item.id}
+                      onOpenChange={() =>
+                        setMobileOpenSection(
+                          mobileOpenSection === item.id ? null : item.id
+                        )
+                      }
+                    >
+                      <CollapsibleTrigger className="w-full">
+                        <div
+                          className={cn(
+                            "flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold uppercase tracking-wider transition-all",
+                            active
+                              ? "text-white bg-white/10"
+                              : "text-white/80 hover:text-white hover:bg-white/10"
+                          )}
+                        >
+                          <span className="flex items-center gap-2">
+                            <Icon className="h-4 w-4" />
+                            {item.label}
+                          </span>
+                          <ChevronDown
+                            className={cn(
+                              "h-4 w-4 transition-transform duration-200",
+                              mobileOpenSection === item.id && "rotate-180"
+                            )}
+                          />
+                        </div>
+                      </CollapsibleTrigger>
+        
+                      <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+                        <div className="pl-2 pt-1 space-y-1">
+                          {item.children.map((child) => {
+                            const ChildIcon = getIcon(child.icon);
+                            return (
+                              <Link
+                                key={child.id}
+                                to={child.href}
+                                onClick={() => setIsMenuOpen(false)}
+                                className={cn(
+                                  "flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all",
+                                  isActiveRoute(child.href)
+                                    ? "bg-white/15 text-white"
+                                    : "text-white/80 hover:bg-white/10 hover:text-white"
+                                )}
+                              >
+                                <ChildIcon className="h-5 w-5" />
+                                {child.label}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </CollapsibleContent>
+                    </Collapsible>
+                  );
+                }
+        
                 return (
-                  <Collapsible key={item.id} open={mobileOpenSection === item.id} onOpenChange={() => setMobileOpenSection(mobileOpenSection === item.id ? null : item.id)}>
-                    <CollapsibleTrigger className="w-full">
-                      <div className={cn(
-                        "flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold uppercase tracking-wider transition-all",
-                        active ? "text-primary bg-primary/5" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                      )}>
-                        <span className="flex items-center gap-2"><Icon className="h-4 w-4" />{item.label}</span>
-                        <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", mobileOpenSection === item.id && "rotate-180")} />
-                      </div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-                      <div className="pl-2 pt-1 space-y-1">
-                        {item.children.map((child) => {
-                          const ChildIcon = getIcon(child.icon);
-                          return (
-                            <Link key={child.id} to={child.href} onClick={() => setIsMenuOpen(false)} className={cn(
-                              "flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all",
-                              isActiveRoute(child.href) ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted/50"
-                            )}>
-                              <ChildIcon className="h-5 w-5" />{child.label}
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    </CollapsibleContent>
-                  </Collapsible>
+                  <Link
+                    key={item.id}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={cn(
+                      "flex items-center gap-3 px-4 py-3.5 rounded-xl text-base font-medium transition-all",
+                      isActiveRoute(item.href)
+                        ? "bg-white/15 text-white shadow-md"
+                        : "text-white/90 hover:bg-white/10 hover:text-white"
+                    )}
+                  >
+                    <Icon className="h-5 w-5" />
+                    {item.label}
+                  </Link>
                 );
-              }
-              return (
-                <Link key={item.id} to={item.href} onClick={() => setIsMenuOpen(false)} className={cn(
-                  "flex items-center gap-3 px-4 py-3.5 rounded-xl text-base font-medium transition-all",
-                  isActiveRoute(item.href) ? "bg-primary text-primary-foreground shadow-md" : "text-foreground hover:bg-primary/5"
-                )}>
-                  <Icon className="h-5 w-5" />{item.label}
-                </Link>
-              );
-            })}
-
-            <div className="my-4 border-t border-border" />
-
-            {user ? (
-              <div className="space-y-2 px-2">
-                {isAdminOrTeacher ? (
-                  <Link to="/admin" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="outline" className="w-full justify-start gap-3 h-12 rounded-xl">
-                      <LayoutDashboard className="h-5 w-5" />Admin Panel
-                    </Button>
-                  </Link>
-                ) : (
-                  <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="outline" className="w-full justify-start gap-3 h-12 rounded-xl">
-                      <User className="h-5 w-5" />My Dashboard
-                    </Button>
-                  </Link>
-                )}
-                <Button variant="ghost" className="w-full justify-start gap-3 h-12 rounded-xl text-destructive hover:text-destructive hover:bg-destructive/10" onClick={() => { signOut(); setIsMenuOpen(false); }}>
-                  <LogOut className="h-5 w-5" />Logout
-                </Button>
-              </div>
-            ) : (
-              <div className="px-2">
-                <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
-                  <Button className="w-full h-12 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-base">
-                    <User className="h-5 w-5 mr-2" />Account
+              })}
+        
+              <div className="my-4 border-t border-white/20" />
+        
+              {user ? (
+                <div className="space-y-2 px-2">
+                  {isAdminOrTeacher ? (
+                    <Link to="/admin" onClick={() => setIsMenuOpen(false)}>
+                      <Button
+                        className="w-full justify-start gap-3 h-12 rounded-xl bg-white text-[#004643] hover:bg-white/90"
+                      >
+                        <LayoutDashboard className="h-5 w-5" />
+                        Admin Panel
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
+                      <Button
+                        className="w-full justify-start gap-3 h-12 rounded-xl bg-white text-[#004643] hover:bg-white/90"
+                      >
+                        <User className="h-5 w-5" />
+                        My Dashboard
+                      </Button>
+                    </Link>
+                  )}
+        
+                  <Button
+                    className="w-full justify-start gap-3 h-12 rounded-xl bg-red-500 text-white hover:bg-red-600"
+                    onClick={() => {
+                      signOut();
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    <LogOut className="h-5 w-5" />
+                    Logout
                   </Button>
-                </Link>
-              </div>
-            )}
-          </nav>
-        </div>
-      )}
+                </div>
+              ) : (
+                <div className="px-2">
+                  <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+                    <Button className="w-full h-12 rounded-xl bg-white text-[#004643] hover:bg-white/90 font-semibold text-base">
+                      <User className="h-5 w-5 mr-2" />
+                      Account
+                    </Button>
+                  </Link>
+                </div>
+              )}
+            </nav>
+          </div>
+        )}
     </header>
   );
 };
