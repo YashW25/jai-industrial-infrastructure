@@ -1,24 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://jaiindustrialinfrastructure.in/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
     <loc>https://jaiindustrialinfrastructure.in/about</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jaiindustrialinfrastructure.in/events</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jaiindustrialinfrastructure.in/team</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://jaiindustrialinfrastructure.in/services</loc>
+    <loc>https://jaiindustrialinfrastructure.in/gallery</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://jaiindustrialinfrastructure.in/contact</loc>
+    <loc>https://jaiindustrialinfrastructure.in/partners</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
+  <url>
+    <loc>https://jaiindustrialinfrastructure.in/charter</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://jaiindustrialinfrastructure.in/downloads</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jaiindustrialinfrastructure.in/notice</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jaiindustrialinfrastructure.in/certificates</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://jaiindustrialinfrastructure.in/contact</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
