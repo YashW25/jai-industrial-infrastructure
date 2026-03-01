@@ -192,8 +192,16 @@ const Index = () => {
             {ctaSection?.content || 'Contact our team of experts today to discuss your infrastructure requirements and discover how we can accelerate your growth.'}
           </p>
           <Link to={ctaSection?.cta_link || "/contact"}>
-            <Button size="lg" variant="secondary" className="px-10 py-6 text-lg rounded-full font-bold text-primary hover:scale-105 transition-transform">
-              {ctaSection?.cta_text || 'Contact Us Now'}
+            <Button
+              size="lg"
+              className="px-10 py-6 text-lg rounded-full font-bold 
+                         bg-[#F97415] text-white 
+                         hover:bg-[#004643] 
+                         hover:scale-105 
+                         transition-all duration-300 
+                         shadow-lg"
+            >
+              {ctaSection?.cta_text || "Contact Us Now"}
             </Button>
           </Link>
         </div>
