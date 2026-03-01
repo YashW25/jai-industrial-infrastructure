@@ -1,0 +1,136 @@
+﻿[36mvite v5.4.19 [32mbuilding for production...[36m[39m
+transforming...
+npx : Browserslist: 
+browsers data 
+(caniuse-lite) is 8 
+months old. Please run:
+At line:1 char:1
++ npx vite build 2>&1 
+| Out-File -FilePath 
+'build_log2.txt' 
+-Encoding u ...
++ ~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (Browserslist:   
+  b...ld. Please ru    
+n::String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+  npx update-browsersli
+st-db@latest
+  Why you should do it 
+regularly: https://gith
+ub.com/browserslist/upd
+ate-db#readme
+[32mΓ£ô[39m 2599 modules transformed.
+[31mx[39m Build 
+failed in 3.35s
+[31merror during 
+build:
+[31msrc/pages/admin/Ga
+lleryPage.tsx (15:9): 
+"useAdminFetch" is not 
+exported by "src/hooks/
+useAdminData.ts", 
+imported by "src/pages/
+admin/GalleryPage.tsx".
+[31m
+file: [36mY:/materproj
+ect-yash-main/materproj
+ect-yash-main/src/pages
+/admin/GalleryPage.tsx:
+15:9[31m
+[33m
+13: import { 
+ImageUpload } from '@/c
+omponents/admin/ImageUp
+load';
+14: import { 
+DriveFolderInput } 
+from '@/components/admi
+n/DriveFolderInput';
+15: import { 
+useAdminFetch, 
+useAdminCreate, 
+useAdminUpdate, 
+useAdminDelete } from 
+'@/hooks/useAdminData';
+             ^
+16: import type { 
+GalleryItem, Event, 
+Occasion } from 
+'@/types/database';
+17: import { format } 
+from 'date-fns';
+[31m
+    at getRollupError (
+file:///Y:/materproject
+-yash-main/materproject
+-yash-main/node_modules
+/rollup/dist/es/shared/
+parseAst.js:395:41)
+    at error (file:///Y
+:/materproject-yash-mai
+n/materproject-yash-mai
+n/node_modules/rollup/d
+ist/es/shared/parseAst.
+js:391:42)
+    at Module.error (fi
+le:///Y:/materproject-y
+ash-main/materproject-y
+ash-main/node_modules/r
+ollup/dist/es/shared/no
+de-entry.js:15535:16)
+    at 
+Module.traceVariable (f
+ile:///Y:/materproject-
+yash-main/materproject-
+yash-main/node_modules/
+rollup/dist/es/shared/n
+ode-entry.js:15984:29)
+    at ModuleScope.find
+Variable (file:///Y:/ma
+terproject-yash-main/ma
+terproject-yash-main/no
+de_modules/rollup/dist/
+es/shared/node-entry.js
+:13770:39)
+    at ReturnValueScope
+.findVariable (file:///
+Y:/materproject-yash-ma
+in/materproject-yash-ma
+in/node_modules/rollup/
+dist/es/shared/node-ent
+ry.js:5252:38)
+    at FunctionBodyScop
+e.findVariable (file://
+/Y:/materproject-yash-m
+ain/materproject-yash-m
+ain/node_modules/rollup
+/dist/es/shared/node-en
+try.js:5252:38)
+    at Identifier.bind 
+(file:///Y:/materprojec
+t-yash-main/materprojec
+t-yash-main/node_module
+s/rollup/dist/es/shared
+/node-entry.js:5035:40)
+    at 
+CallExpression.bind (fi
+le:///Y:/materproject-y
+ash-main/materproject-y
+ash-main/node_modules/r
+ollup/dist/es/shared/no
+de-entry.js:2855:23)
+    at 
+CallExpression.bind (fi
+le:///Y:/materproject-y
+ash-main/materproject-y
+ash-main/node_modules/r
+ollup/dist/es/shared/no
+de-entry.js:11235:15)[
+39m
