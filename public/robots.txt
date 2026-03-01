@@ -22,4 +22,4 @@ Allow: /
 User-agent: WhatsApp
 Allow: /
 
-Sitemap: https://innovationcell.isbmcoe.in/sitemap.xml
+Sitemap: https://jaiindustrialinfrastructure.in/sitemap.xml
