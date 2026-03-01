@@ -195,9 +195,10 @@ const Index = () => {
             <Button
               size="lg"
               className="px-10 py-6 text-lg rounded-full font-bold 
-                         bg-[#F97415] text-white 
-                         hover:bg-[#004643] 
-                         hover:scale-105 
+                         bg-[#004643] text-white 
+                         hover:bg-[#ffffff] 
+                         hover:scale-105
+                         hover:text-black
                          transition-all duration-300 
                          shadow-lg"
             >
