@@ -1,11 +1,3 @@
-[build]
-  publish = "dist"
-  command = "npm run build"
-
-[[edge_functions]]
-  path = "/*"
-  function = "og-tags"
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
