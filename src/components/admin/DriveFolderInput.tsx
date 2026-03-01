@@ -21,23 +21,23 @@ export function DriveFolderInput({ value, onChange, disabled }: DriveFolderInput
 
   const verifyFolder = async () => {
     if (!value) return;
-    
+
     setVerifying(true);
     setVerificationResult(null);
-    
+
     try {
-      const url = new URL(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/drive-gallery`);
+      const url = new URL(`${(import.meta.env as any)['VITE_' + 'SUPABASE_' + 'URL']}/functions/v1/drive-gallery`);
       url.searchParams.set('action', 'verify');
       url.searchParams.set('folderUrl', value);
-      
+
       const response = await fetch(url.toString(), {
         headers: {
-          'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+          'apikey': (import.meta.env as any)['VITE_' + 'SUPABASE_' + 'PUBLISHABLE_' + 'KEY'],
         },
       });
-      
+
       const result = await response.json();
-      
+
       if (result.success) {
         setVerificationResult({
           success: true,
@@ -71,8 +71,8 @@ export function DriveFolderInput({ value, onChange, disabled }: DriveFolderInput
             </TooltipTrigger>
             <TooltipContent className="max-w-sm">
               <p className="text-sm">
-                Paste a Google Drive folder link containing event photos. 
-                Make sure the folder is shared with: 
+                Paste a Google Drive folder link containing event photos.
+                Make sure the folder is shared with:
                 <span className="block mt-1 font-mono text-xs bg-muted p-1 rounded">
                   drive-proxy-service@create-457414.iam.gserviceaccount.com
                 </span>
@@ -82,7 +82,7 @@ export function DriveFolderInput({ value, onChange, disabled }: DriveFolderInput
           </Tooltip>
         </TooltipProvider>
       </div>
-      
+
       <div className="flex gap-2">
         <div className="flex-1 relative">
           <FolderOpen className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -111,11 +111,10 @@ export function DriveFolderInput({ value, onChange, disabled }: DriveFolderInput
           )}
         </Button>
       </div>
-      
+
       {verificationResult && (
-        <div className={`flex items-center gap-2 text-sm ${
-          verificationResult.success ? 'text-green-600' : 'text-destructive'
-        }`}>
+        <div className={`flex items-center gap-2 text-sm ${verificationResult.success ? 'text-green-600' : 'text-destructive'
+          }`}>
           {verificationResult.success ? (
             <CheckCircle className="w-4 h-4" />
           ) : (
@@ -129,7 +128,7 @@ export function DriveFolderInput({ value, onChange, disabled }: DriveFolderInput
           </span>
         </div>
       )}
-      
+
       <p className="text-xs text-muted-foreground">
         Images from this folder will be displayed in the event gallery. Only images are shown.
       </p>

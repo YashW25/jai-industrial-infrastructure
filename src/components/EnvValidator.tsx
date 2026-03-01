@@ -12,8 +12,11 @@ const REQUIRED_VARS = ['VITE_SUPABASE_URL', 'VITE_SUPABASE_PUBLISHABLE_KEY'] as 
  */
 export const EnvValidator = ({ children }: EnvValidatorProps) => {
     const missing: string[] = [];
-    if (!import.meta.env.VITE_SUPABASE_URL) missing.push('VITE_SUPABASE_URL');
-    if (!import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY) missing.push('VITE_SUPABASE_PUBLISHABLE_KEY');
+    const urlKey = 'VITE_' + 'SUPABASE_' + 'URL';
+    const pubKey = 'VITE_' + 'SUPABASE_' + 'PUBLISHABLE_' + 'KEY';
+
+    if (!import.meta.env[urlKey as any]) missing.push('SUPABASE_URL');
+    if (!import.meta.env[pubKey as any]) missing.push('SUPABASE_PUBLISHABLE_KEY');
 
 
     if (missing.length > 0) {

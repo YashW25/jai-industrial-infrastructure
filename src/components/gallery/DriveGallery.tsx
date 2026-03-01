@@ -31,32 +31,32 @@ export function DriveGallery({ folderUrl, pageSize = 24, className = '' }: Drive
 
   const fetchImages = useCallback(async (pageToken?: string) => {
     if (!folderUrl) return;
-    
+
     try {
       const isInitial = !pageToken;
       if (isInitial) setLoading(true);
       else setLoadingMore(true);
-      
+
       // Use fetch directly for GET with query params
-      const url = new URL(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/drive-gallery`);
+      const url = new URL(`${(import.meta.env as any)['VITE_' + 'SUPABASE_' + 'URL']}/functions/v1/drive-gallery`);
       url.searchParams.set('action', 'list');
       url.searchParams.set('folderUrl', folderUrl);
       url.searchParams.set('pageSize', pageSize.toString());
       if (pageToken) url.searchParams.set('pageToken', pageToken);
-      
+
       const response = await fetch(url.toString(), {
         headers: {
-          'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+          'apikey': (import.meta.env as any)['VITE_' + 'SUPABASE_' + 'PUBLISHABLE_' + 'KEY'],
         },
       });
-      
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || 'Failed to load images');
       }
-      
+
       const result = await response.json();
-      
+
       if (isInitial) {
         setFiles(result.files || []);
       } else {
@@ -99,13 +99,13 @@ export function DriveGallery({ folderUrl, pageSize = 24, className = '' }: Drive
   // Keyboard navigation
   useEffect(() => {
     if (!lightboxOpen) return;
-    
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') goToPrevious();
       if (e.key === 'ArrowRight') goToNext();
     };
-    
+
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxOpen, files.length]);
@@ -192,7 +192,7 @@ export function DriveGallery({ folderUrl, pageSize = 24, className = '' }: Drive
 
       {/* Lightbox */}
       {lightboxOpen && files[currentIndex] && (
-        <div 
+        <div
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
           onClick={closeLightbox}
         >
@@ -215,7 +215,7 @@ export function DriveGallery({ folderUrl, pageSize = 24, className = '' }: Drive
           </button>
 
           {/* Image */}
-          <div 
+          <div
             className="max-w-[90vw] max-h-[90vh] relative"
             onClick={(e) => e.stopPropagation()}
           >

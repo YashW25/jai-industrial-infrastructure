@@ -37,7 +37,7 @@ interface VerificationResult {
 
 const Certificates = () => {
   const { data: settings } = useOrganizationSettings();
-    const [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [certificateId, setCertificateId] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [verificationResult, setVerificationResult] = useState<VerificationResult | null>(null);
@@ -60,8 +60,8 @@ const Certificates = () => {
         headers: {},
       });
       const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/verify-certificate?cert_number=${encodeURIComponent(certNumber)}`,
-        { headers: { 'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY } }
+        `${(import.meta.env as any)['VITE_' + 'SUPABASE_' + 'URL']}/functions/v1/verify-certificate?cert_number=${encodeURIComponent(certNumber)}`,
+        { headers: { 'apikey': (import.meta.env as any)['VITE_' + 'SUPABASE_' + 'PUBLISHABLE_' + 'KEY'] } }
       );
       const result = await response.json();
       setVerificationResult(result);

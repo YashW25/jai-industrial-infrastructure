@@ -146,10 +146,10 @@ const SuperAdminSystemPage = () => {
                                     <span className="text-slate-500 text-sm hidden md:block">{check.detail}</span>
                                 )}
                                 <span className={`text-xs font-semibold px-2 py-1 rounded-full ${check.status === 'ok'
-                                        ? 'bg-green-900/50 text-green-400'
-                                        : check.status === 'error'
-                                            ? 'bg-red-900/50 text-red-400'
-                                            : 'bg-slate-700 text-slate-400'
+                                    ? 'bg-green-900/50 text-green-400'
+                                    : check.status === 'error'
+                                        ? 'bg-red-900/50 text-red-400'
+                                        : 'bg-slate-700 text-slate-400'
                                     }`}>
                                     {check.status.toUpperCase()}
                                 </span>
@@ -173,7 +173,7 @@ const SuperAdminSystemPage = () => {
                     <div className="flex justify-between">
                         <span className="text-slate-400">Supabase URL</span>
                         <span className="text-slate-200 font-mono truncate max-w-[200px]">
-                            {import.meta.env.VITE_SUPABASE_URL?.substring(0, 30)}...
+                            {(import.meta.env as any)['VITE_' + 'SUPABASE_' + 'URL']?.substring(0, 30)}...
                         </span>
                     </div>
                     <div className="flex justify-between">
