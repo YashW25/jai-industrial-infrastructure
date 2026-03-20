@@ -37,11 +37,11 @@ export default async function handler(request: Request, context: Context) {
   const supabaseUrl = Deno.env.get('VITE_SUPABASE_URL') || Deno.env.get('SUPABASE_URL');
   
   let metadata = {
-    title: 'Student Club Portal',
-    description: 'Empowering future leaders through innovation and excellence',
+    title: 'Jai Industrial Infrastructure | Engineering & Infrastructure Solutions',
+    description: 'Industrial construction, fabrication, and infrastructure development company serving India and export markets from Kinhi MIDC, Bhusawal, Maharashtra.',
     image: `${url.origin}/og-image.png`,
     url: url.origin,
-    siteName: 'Student Club Portal',
+    siteName: 'Jai Industrial Infrastructure',
   };
 
   try {
