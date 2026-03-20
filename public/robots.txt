@@ -22,4 +22,4 @@ Allow: /
 User-agent: WhatsApp
 Allow: /
 
-Sitemap: https://jaiindustrialinfrastructure.in/sitemap.xml
+Sitemap: https://www.jaiindustrialinfrastructure.in/sitemap.xml
